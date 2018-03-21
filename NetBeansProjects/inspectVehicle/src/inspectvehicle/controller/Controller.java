@@ -8,8 +8,10 @@ package inspectvehicle.controller;
 import inspectvehicle.integration.VehicleInspectionsRegisty;
 import inspectvehicle.model.CheckListDTO;
 import inspectvehicle.model.Payment;
+import inspectvehicle.model.ResultDTO;
 import util.Printer;
 import inspectvehicle.model.TransactionSystem;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,10 +20,12 @@ import inspectvehicle.model.TransactionSystem;
 public class Controller {
  private int cost; 
  CheckListDTO checkList;
+ String regNo;
     public Controller() {
     }
   
     public int checkInspection(String regNo) {
+        this.regNo=regNo;
         CheckListDTO checkList= getCheckList(regNo);
       return  this.cost= TransactionSystem.getCost(checkList);
     }
@@ -46,5 +50,14 @@ public class Controller {
     public void ShowCheckList(){
         Printer.printSpecification(checkList);
     }
+    
+    public void sendResultToPrinter(ResultDTO result){
+        Printer.printResult(checkList, result);
+        
+    }
+    
+    
+    
+
     
 }

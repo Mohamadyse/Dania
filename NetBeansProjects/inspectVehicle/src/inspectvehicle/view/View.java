@@ -7,6 +7,9 @@ package inspectvehicle.view;
 
 import inspectvehicle.controller.Controller;
 import inspectvehicle.model.CheckListDTO;
+import inspectvehicle.model.Choice;
+import inspectvehicle.model.ResultDTO;
+import java.util.ArrayList;
 import java.util.Scanner;
  
 
@@ -42,35 +45,49 @@ public class View {
     }
         
    
-        public void setResult(CheckListDTO checkList) {
-        int i=1;
-            if (checkList.isToCheckBreaks()) {
-            System.out.println(i+". Check the bearks");
-            i++;
-        }
-        if (checkList.isToCheckDoors()) {
-           System.out.println(i+". Check the doors");
-            i++;
-        }
+    public void setResult() {
+        ArrayList<Boolean> checkList = contr.getCheckList().getArray();
 
-        if (checkList.isToCheckEngine()) {
-         System.out.println(i+". Check the engine");
-            i++;          
-            }
+        ResultDTO result = new ResultDTO();
+
+        Scanner scan = new Scanner(System.in);
         
-        if (checkList.isToCheckGear()) {
-         System.out.println(i+". Check the gearbox");
-            i++;                   
+        
+                int i = 0;
+        for (Choice c : Choice.values()) {
+            if (checkList.get(i)) {
+
+                System.out.println("Check the " + c);
+                result.add(i, scan.next());
+            } else {
+                result.add(i, "not requered");
+            }
+            i++;
+
         }
-        if (checkList.isToCheckKeys()) {
-         System.out.println(i+". Check the keys");
-            i++;           
-                    
-        }
-        if (checkList.isToCheckWheel()) {
-         System.out.println(i+". Check the wheels");
-            i++;                           
-   
-        }
+        scan.close();
+        contr.sendResultToPrinter(result);
     }
-   }
+        
+        
+        
+        
+// 
+//      Choice[] a= Choice.values();
+//            for(int i=0; i <checkList.size(); i++){
+//            if (checkList.get(i)) {
+//
+//                System.out.println("Check the " +a[i].toString() ); 
+//                result.add(i, scan.next());
+//            }
+//            else
+//                result.add(i, "not requered");
+//            
+//        }
+//        contr.sendResultToPrinter(result);
+//    }
+
+}
+   
+   
+  

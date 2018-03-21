@@ -38,9 +38,11 @@ public class Main {
         
         contr.ShowCheckList();
 
-        
+        screen.setResult( );
         
         garage.closeDoor();
+        
+        System.exit(0);
         // TODO code application logic here
     }
 

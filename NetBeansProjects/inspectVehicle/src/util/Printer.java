@@ -6,6 +6,7 @@
 package util;
 
 import inspectvehicle.model.CheckListDTO;
+import inspectvehicle.model.ResultDTO;
 
 /**
  *
@@ -25,35 +26,37 @@ public class Printer {
     public static void printSpecification(CheckListDTO checkList) {
         int i=1;
         
-        
-        if (checkList.isToCheckBreaks()) {
-            System.out.println(i+". Check the bearks");
-            i++;
+          if (checkList.isToCheckWheel()) {
+         System.out.println(i+". Check the wheels");
+            i++;                           
+   
         }
-        if (checkList.isToCheckDoors()) {
+           if (checkList.isToCheckDoors()) {
            System.out.println(i+". Check the doors");
             i++;
         }
-
-        if (checkList.isToCheckEngine()) {
+              if (checkList.isToCheckEngine()) {
          System.out.println(i+". Check the engine");
             i++;          
             }
-        
-        if (checkList.isToCheckGear()) {
+               if (checkList.isToCheckGear()) {
          System.out.println(i+". Check the gearbox");
             i++;                   
+        }
+        if (checkList.isToCheckBreaks()) {
+            System.out.println(i+". Check the bearks");
+            i++;
         }
         if (checkList.isToCheckKeys()) {
          System.out.println(i+". Check the keys");
             i++;           
                     
         }
-        if (checkList.isToCheckWheel()) {
-         System.out.println(i+". Check the wheels");
-            i++;                           
-   
-        }
+      
+    }
+    
+    public static void printResult(CheckListDTO checkList,ResultDTO result){
+        System.out.println(" there is the result.... thank you....close the door behind you");
     }
 
 }
