@@ -11,7 +11,7 @@ package inspectvehicle.integration;
  */
 public class PaymentAuthorization {
     
-    public boolean authorizePayment(int amount){
+    public  boolean authorizePayment(int amount){
         System.out.println("Det gick bra, ta ut ditt kort");
         return true;
     }
