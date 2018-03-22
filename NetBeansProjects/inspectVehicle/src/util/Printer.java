@@ -6,7 +6,10 @@
 package util;
 
 import inspectvehicle.model.CheckListDTO;
+import inspectvehicle.controller.Choice;
 import inspectvehicle.model.ResultDTO;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -24,39 +27,29 @@ public class Printer {
     }
 
     public static void printSpecification(CheckListDTO checkList) {
-        int i=1;
-        
-          if (checkList.isToCheckWheel()) {
-         System.out.println(i+". Check the wheels");
-            i++;                           
-   
-        }
-           if (checkList.isToCheckDoors()) {
-           System.out.println(i+". Check the doors");
-            i++;
-        }
-              if (checkList.isToCheckEngine()) {
-         System.out.println(i+". Check the engine");
-            i++;          
+
+        int i = 0, j = 1;
+        System.out.println("Here is the list of tests you have to perform");
+        ArrayList<Boolean> ArrayOfAllParts = checkList.getCheckListAsArray();
+        for (boolean partOfVehicle : ArrayOfAllParts) {
+            if (partOfVehicle) {
+                System.out.println(j + ". " + Choice.values()[i] + " .");
+                j++;
             }
-               if (checkList.isToCheckGear()) {
-         System.out.println(i+". Check the gearbox");
-            i++;                   
-        }
-        if (checkList.isToCheckBreaks()) {
-            System.out.println(i+". Check the bearks");
             i++;
         }
-        if (checkList.isToCheckKeys()) {
-         System.out.println(i+". Check the keys");
-            i++;           
-                    
-        }
-      
+
     }
     
-    public static void printResult(CheckListDTO checkList,ResultDTO result){
-        System.out.println(" there is the result.... thank you....close the door behind you");
+    public static void printResult(ResultDTO result){
+        
+            HashMap<Choice, String> result1 = result.getHashMap();
+        System.out.println(" there is the result.... ");
+        System.out.println(" +++++++++++++++++++++++++++++++++ ");
+        result1.entrySet().stream().forEach(x -> System.out.println(x.getKey() + " : " + x.getValue()));
+        System.out.println(" +++++++++++++++++++++++++++++++++ ");
+        System.out.println("         Welcome back             ");
+        System.out.println("thank you....Close the door behind you");
     }
 
 }

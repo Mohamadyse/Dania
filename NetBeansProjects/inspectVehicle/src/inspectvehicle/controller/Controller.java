@@ -18,42 +18,43 @@ import java.util.ArrayList;
  * @author mohamad
  */
 public class Controller {
- private int cost; 
- CheckListDTO checkList;
- String regNo;
+    private int cost;
+    CheckListDTO checkList;
+    String regNo;
+
     public Controller() {
     }
-  
-    public int checkInspection(String regNo) {
-        this.regNo=regNo;
-        CheckListDTO checkList= getCheckList(regNo);
-      return  this.cost= TransactionSystem.getCost(checkList);
-    }
 
+    public int checkInspection(String regNo) {
+        this.regNo = regNo;
+        CheckListDTO checkList = getCheckList(regNo);
+        return this.cost = TransactionSystem.getCost(checkList);
+    }
 
     private CheckListDTO getCheckList(String regNo) {
         VehicleInspectionsRegisty vehicleData = new VehicleInspectionsRegisty();
         CheckListDTO checkList = vehicleData.getInspectionList(regNo);
-        return this.checkList=checkList;
-    }
-    
-    public CheckListDTO getCheckList() {
-        return checkList;
+        return this.checkList = checkList;
     }
 
-    public boolean payCard(){
+    public ArrayList<Boolean> getCheckList() {
+        return checkList.getCheckListAsArray();
+    }
+
+    public boolean payCard() {
         System.out.println("insert your card please");
         return Payment.pay(cost);
     }
-    
+
     
     public void ShowCheckList(){
         Printer.printSpecification(checkList);
     }
     
-    public void sendResultToPrinter(ResultDTO result){
-        Printer.printResult(checkList, result);
-        
+    public void sendResult(ResultDTO result) {
+        Printer.printResult(result);
+        VehicleInspectionsRegisty.registerResult(regNo, result);
+
     }
     
     

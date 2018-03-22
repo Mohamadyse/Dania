@@ -8,6 +8,7 @@ package startup;
 import inspectvehicle.controller.Controller;
 import inspectvehicle.model.garage.QueueProgram;
 import inspectvehicle.view.View;
+import java.util.Scanner;
 
 /**
  *
@@ -23,25 +24,30 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         QueueProgram garage = new QueueProgram();
-                 Thread.sleep(SLEEP_MILLIS);
+                                              Thread.sleep(SLEEP_MILLIS);
+                                              Scanner button=new Scanner(System.in);
+                                              button.nextLine();
         garage.nextCustomer();
-                 Thread.sleep(SLEEP_MILLIS);
+                                              Thread.sleep(SLEEP_MILLIS);
 
         Controller contr = new Controller();
 
         View screen = new View(contr);
-
+        
+        
+         
+                                                button.nextLine();
         screen.register();
-    
+                                                button.nextLine();
         screen.toPay();
         
-        
+                                                button.nextLine();
         contr.ShowCheckList();
-
+                                                button.nextLine();
         screen.setResult( );
-        
+                                                
         garage.closeDoor();
-        
+                                                button.close();
         System.exit(0);
         // TODO code application logic here
     }

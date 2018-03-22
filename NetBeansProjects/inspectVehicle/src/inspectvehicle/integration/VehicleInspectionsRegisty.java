@@ -15,14 +15,12 @@ import java.util.Random;
  * @author mohamad
  */
 public class VehicleInspectionsRegisty {
-     private HashMap< String,ResultDTO > resultRegistery;
+     private static HashMap< String,ResultDTO > resultRegistery;
     
 public VehicleInspectionsRegisty(){
     
     resultRegistery=new HashMap<>();
 }
-
- 
 
 /**
  * it create the checklist for the vehicle from row information from a file
@@ -35,17 +33,9 @@ public VehicleInspectionsRegisty(){
         return checkList;
     }
 
-  public void add(String regNo,ResultDTO result){
+  public static void registerResult(String regNo,ResultDTO result){
       resultRegistery.put(regNo, result);
   }
-  
-  
-//  
-//  result.array.  0 wheel  pass   0.
-//                 1 door   fail
-//                 2  engine null
-//  
-  
 
 
 }

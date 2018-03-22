@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package inspectvehicle.model;
+package inspectvehicle.controller;
 
 /**
  *
  * @author mohamad
  */
-public enum Choice {  WHEEL("the wheel" ),DOOR("the door"  ),ENGINE("the engine" ),GEAR("the gear"),BREAK("the breaks"),KEY("the keys");
+public enum Choice {  WHEEL("the wheels" ),DOOR("the doors"  ),ENGINE("the engines" ),GEAR("the gear"),BREAK("the breaks"),KEY("the keys");
 String s; int i;
 Choice(String s ){
     this.s=s;

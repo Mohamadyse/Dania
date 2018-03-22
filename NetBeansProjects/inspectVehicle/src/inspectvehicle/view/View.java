@@ -7,7 +7,7 @@ package inspectvehicle.view;
 
 import inspectvehicle.controller.Controller;
 import inspectvehicle.model.CheckListDTO;
-import inspectvehicle.model.Choice;
+import inspectvehicle.controller.Choice;
 import inspectvehicle.model.ResultDTO;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -27,66 +27,43 @@ public class View {
     }
 
     public void register() {
-       
-        String regNo =  typeRegNo();
+
+        String regNo = typeRegNo();
         int cost = contr.checkInspection(regNo);
-        System.out.println("the cost of inspection is: " + cost );
+        System.out.println("the cost of inspection is: " + cost);
     }
-    
-    private String typeRegNo(){
-        Scanner reader= new Scanner(System.in);
+
+    private String typeRegNo() {
+        Scanner reader = new Scanner(System.in);
         System.out.println("Enter the vehicle registration number");
-        return  reader.next();
+        return reader.next();
     }
- 
   
     public void toPay(){
         contr.payCard();
     }
-        
    
     public void setResult() {
-        ArrayList<Boolean> checkList = contr.getCheckList().getArray();
-
+        ArrayList<Boolean> checkList = contr.getCheckList();
         ResultDTO result = new ResultDTO();
-
         Scanner scan = new Scanner(System.in);
-        
-        
-                int i = 0;
+        int i = 0;
         for (Choice c : Choice.values()) {
             if (checkList.get(i)) {
-
-                System.out.println("Check the " + c);
-                result.add(i, scan.next());
+                System.out.println("fill in the result of testing... the " + c);
+                result.add(c, scan.next());
             } else {
-                result.add(i, "not requered");
+                result.add(c, "no need to inspect");
             }
             i++;
-
         }
         scan.close();
-        contr.sendResultToPrinter(result);
+        contr.sendResult(result);
     }
         
         
         
-        
-// 
-//      Choice[] a= Choice.values();
-//            for(int i=0; i <checkList.size(); i++){
-//            if (checkList.get(i)) {
-//
-//                System.out.println("Check the " +a[i].toString() ); 
-//                result.add(i, scan.next());
-//            }
-//            else
-//                result.add(i, "not requered");
-//            
-//        }
-//        contr.sendResultToPrinter(result);
-//    }
-
+         
 }
    
    

@@ -5,24 +5,34 @@
  */
 package inspectvehicle.model;
 
+import inspectvehicle.controller.Choice;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
  * @author mohamad
  */
 public class ResultDTO {
-    ArrayList<String> result;
-    
+//    ArrayList<String> result;
+   private HashMap<Choice,String> result;
     
     public ResultDTO(){
-        result =new ArrayList<>();
+//        result =new ArrayList<>();
+        result=new HashMap<>();
     }
     
     
     
-  public void  add(int index,String evaluation){
-      result.add(index, evaluation);
+  public void  add(Choice achoice,String evaluation){ //name2
+//      result.add(index, evaluation);
+      result.put(achoice , evaluation);
       
+  }
+  
+  public HashMap<Choice,String>  getHashMap(){
+      
+      return result;
+//      result.entrySet().stream().forEach(x->System.out.println(    x.getKey()    +x.getValue()  ));
   }
 }

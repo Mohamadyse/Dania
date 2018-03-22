@@ -19,11 +19,8 @@ public class Payment {
     
     public static boolean pay(int cost) {
         System.out.println("pending authorization...");
-
         boolean isPaid = (new PaymentAuthorization()).authorizePayment(cost);
-
         Printer.printReceipt(cost, isPaid);
-
         return isPaid;
     }
     

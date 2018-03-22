@@ -39,56 +39,37 @@ public class CheckListDTO {
   
   
     }
-  public ArrayList   getArray(){
+  public ArrayList getCheckListAsArray(){  
       return s;
   }
   
+   
     public boolean isToCheckWheel() {
         return toCheckWheel;
     }
 
-    public void setToCheckWheel(boolean toCheckWheel) {
-        this.toCheckWheel = toCheckWheel;
-    }
-
-    public boolean isToCheckDoors() {
+      public boolean isToCheckDoors() {
         return toCheckDoors;
     }
 
-    public void setToCheckDoors(boolean toCheckDoors) {
-        this.toCheckDoors = toCheckDoors;
-    }
-
+   
     public boolean isToCheckEngine() {
         return toCheckEngine;
     }
 
-    public void setToCheckEngine(boolean toCheckEngine) {
-        this.toCheckEngine = toCheckEngine;
-    }
-
-    public boolean isToCheckGear() {
+       public boolean isToCheckGear() {
         return toCheckGear;
     }
 
-    public void setToCheckVexel(boolean toCheckVexel) {
-        this.toCheckGear = toCheckVexel;
-    }
-
+   
     public boolean isToCheckBreaks() {
         return toCheckBreaks;
     }
 
-    public void setToCheckBreaks(boolean toCheckBreaks) {
-        this.toCheckBreaks = toCheckBreaks;
-    }
-
+  
     public boolean isToCheckKeys() {
         return toCheckKeys;
     }
 
-    public void setToCheckKeys(boolean toCheckKeys) {
-        this.toCheckKeys = toCheckKeys;
-    }
-
+    
 }
